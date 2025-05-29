@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      padding: 30px 0;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .back-vid {
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: -1;
+    }
+
+    @media (max-aspect-ratio: 16/9) {
+      .back-vid {
+        width: auto;
+        height: 100%;
+      }
+    }
+
+    @media (min-aspect-ratio: 16/9) {
+      .back-vid {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .main-section {
+      width: 90%;
+      height: 90%;
+      background-color: #4ad0ee1b;
+      backdrop-filter: blur(10px);
+      border-radius: 50px;
+      box-shadow: 5px 5px 20px 1px #4acfee;
+      display: flex;
+      flex-direction: column;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 30px 40px;
+    }
+
+    nav h1 {
+      color: white;
+      font-size: 30px;
+      font-weight: 900;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
+
+    nav ul li {
+      margin-left: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: bold;
+      transition: 0.2s;
+      padding: 0 5px;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #4acfee;
+      text-decoration: underline;
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      height: 70%;
+      padding: 0 10%;
+      color: white;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .hero-info {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .hero h1 {
+      font-size: 60px;
+    }
+
+    .hero h2 {
+      margin-top: 20px;
+      font-size: 30px;
+      text-transform: uppercase;
+      background: linear-gradient(
+        to right,
+        #4acfee,
+        #53f8c9,
+        #6070fd,
+        #5bbdff,
+        #4acfee
+      );
+      background-size: 200%;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: animate-gradient 2.5s linear infinite;
+    }
+
+    .hero p {
+      max-width: 450px;
+      margin-top: 7px;
+      margin-bottom: 20px;
+    }
+
+    @keyframes animate-gradient {
+      to {
+        background-position: 200%;
+      }
+    }
+
+    .Buttons {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 30px;
+      background-color: #4acfee;
+      border: 2px solid #4acfee;
+      border-radius: 40px;
+      box-shadow: 0 0 10px #4acfee;
+      font-size: 16px;
+      font-weight: 900;
+      color: #0e1217;
+      cursor: pointer;
+      transition: 0.3s;
+      text-wrap: nowrap;
+      text-align: center;
+      line-height: normal;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background-color: transparent;
+      box-shadow: none;
+      color: #4acfee;
+    }
+
+    .ul-icons {
+      display: flex;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .ul-icons li {
+      margin-left: 10px;
+    }
+
+    .ul-icons a {
+      display: inline-flex;
+      padding: 8px;
+      border: 2px solid #4acfee;
+      border-radius: 50%;
+      font-size: 20px;
+      color: #4acfee;
+      text-decoration: none;
+      margin: 0 7px;
+      transition: 0.3s;
+    }
+
+    .ul-icons a:hover {
+      background: #4acfee;
+      color: #0e1217;
+      box-shadow: 0 0 10px #4acfee;
+    }
+
+    .hero-img {
+      width: 400px;
+      height: 400px;
+      position: relative;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 0 10px #4eddfd;
+      transition: 0.5s;
+      flex-shrink: 0;
+    }
+
+    .hero-img:hover {
+      box-shadow: 0 0 25px #4acfee;
+    }
+
+    .hero-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      /* Removed position absolute and mix-blend-mode */
+    }
+
+    /* Responsive */
+
+    @media (max-width: 980px) {
+      body {
+        height: fit-content;
+        overflow: auto;
+      }
+
+      .main-section nav ul {
+        display: none;
+      }
+
+      .Buttons {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .hero {
+        flex-direction: column;
+        height: auto;
+        padding: 0 5%;
+      }
+
+      .hero-img {
+        width: 350px;
+        height: 350px;
+        margin: 20px 0;
+      }
+    }
+
+    @media (max-width: 440px) {
+      .hero-img {
+        width: 300px;
+        height: 300px;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+    }
+    
+
+
+  </style>
+</head>
+<body>
+  <video autoplay loop muted playsinline class="back-vid">
+    <source src="galaxy.mp4" type="video/mp4" />
+  </video>
+
+  <section class="main-section">
+    <nav>
+      <h1 data-aos="zoom-in" data-aos-duration="1000">
+        <span style="color: #4acfee;">Jagatha </span>V V Sri Surya
+      </h1>
+      <ul>
+        <li><a href="#hero" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+
+    <div class="hero" id="hero">
+      <div class="hero-info">
+        <h1 data-aos="fade-right" data-aos-duration="1000" data-aos-delay="700">
+          Hi, I'm Jagatha V V Sri Surya
+        </h1>
+        <h2 data-aos="fade-left" data-aos-duration="1000" data-aos-delay="900">
+          I'm a Developer
+        </h2>
+        <p data-aos="flip-down" data-aos-duration="1000" data-aos-delay="1000">
+          Passionate about web development and data science, eager to learn and
+          grow.
+        </p>
+        <div class="Buttons">
+          <button
+            class="btn"
+            onclick="window.open('SURYA_mlres.pdf')"
+          >
+            View Resume
+          </button>
+          <a
+            href="SURYA_mlres.pdf"
+            download
+            class="btn"
+            >Download Resume</a
+          >
+          <ul class="ul-icons">
+            <li>
+              <a
+                href="https://www.linkedin.com/in/jagatha-v-v-sri-surya-3114322b6/"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-delay="1200"
+                ><i class="bx bxl-linkedin"></i
+              ></a>
+            </li>
+            <li>
+              <a
+                href="https://github.com/jagathasurya"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-delay="1300"
+                ><i class="bx bxl-github"></i
+              ></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div
+        class="hero-img"
+        data-aos="zoom-in-left"
+        data-aos-duration="2500"
+        data-aos-delay="1500"
+      >
+        <img src="rudra.jpg" alt="Profile Picture" />
+      </div>
+    </div>
+  </section>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>
